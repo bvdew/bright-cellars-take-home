@@ -1,0 +1,17 @@
+@import '../../../mixins.scss';
+
+.Heading {
+    font-size: rem(20);
+    font-weight: 400;
+    margin-top: 0;
+}
+
+.SubHeading {
+    font-size: rem(14);
+    font-weight: 400;
+}
+
+.Button {
+    margin-top: 1rem;
+    display: block;
+}

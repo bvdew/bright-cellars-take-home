@@ -1,0 +1,33 @@
+@import '../../../mixins.scss';
+
+.Heading {
+    font-size: rem(20);
+    font-weight: 400;
+    margin-top: 0;
+}
+
+.AverageRating {
+    font-size: rem(14);
+    font-weight: 400;
+}
+
+.ReviewList {
+    padding-left: rem(10);
+
+    .Review {
+        list-style: none;
+        border-bottom: rem(1) solid var(--border-color);
+
+        .Rating {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        .Text {
+            color: var(--text-secondary);
+            font-size: rem(12);
+            margin-top: rem(5);
+        }
+    }
+}

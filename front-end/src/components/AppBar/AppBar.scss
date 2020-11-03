@@ -1,0 +1,10 @@
+@import '../../mixins.scss';
+
+.AppBar {
+    background-color: var(--eden);
+    display: flex;
+    justify-content: center;
+    height: rem(40);
+    align-items: flex-end;
+    box-shadow: 0 rem(2) rem(6) 0 hsla(0, 0, 0, 0.5);
+}
