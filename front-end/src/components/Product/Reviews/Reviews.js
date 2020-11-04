@@ -53,10 +53,12 @@ const reviews = ({ wineId, updateReview }) => {
         </div>
     );
 };
-
+reviews.defaultProps = {
+    updateReview: true,
+};
 reviews.propTypes = {
     wineId: PropTypes.number.isRequired,
-    updateReview: PropTypes.bool.isRequired,
+    updateReview: PropTypes.bool,
 };
 
 export default reviews;

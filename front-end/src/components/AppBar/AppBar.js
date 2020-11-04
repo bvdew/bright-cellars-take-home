@@ -50,12 +50,14 @@ const appBar = ({ wines, selectedWine, selectWine }) => {
     );
 };
 appBar.defaultProps = {
+    wines: [],
     selectedWine: -1,
+    selectWine: () => {},
 };
 appBar.propTypes = {
-    wines: PropTypes.arrayOf(PropTypes.object).isRequired,
+    wines: PropTypes.arrayOf(PropTypes.object),
     selectedWine: PropTypes.number,
-    selectWine: PropTypes.func.isRequired,
+    selectWine: PropTypes.func,
 };
 
 export default appBar;
