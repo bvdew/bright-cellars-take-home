@@ -10,9 +10,12 @@
         flex-direction: row;
     }
 
+    .Wrapper {
+        flex: 1;
+    }
+
     .Paper {
         padding: 1rem;
         margin: 0.5rem;
-        flex: 1;
     }
 }

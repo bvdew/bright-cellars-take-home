@@ -9,11 +9,10 @@ import styles from './AppBar.scss';
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 60,
+        minWidth: 120,
     },
     selectEmpty: {
-        marginTop: theme.spacing(2),
-        fontSize: '0.9rem',
+        fontSize: '0.875rem',
     },
 }));
 

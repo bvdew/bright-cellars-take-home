@@ -1,33 +1,35 @@
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Details from './Details/Details';
-import Reviews from './Reviews/Reviews';
 import NewReview from './NewReview/NewReview';
 import styles from './Product.scss';
+import Reviews from './Reviews/Reviews';
 
 const product = ({ wineId }) => {
-    const wine = {
-        id: 1,
-        name: 'Mojave Rain Merlot 2017',
-        brand_id: 2,
-        brand_name: 'Mojave Rain',
-        varietal_id: 3,
-        varietal_name: 'Merlot',
-        description: 'lorem ipsum',
+    const [triggerState, setTrigger] = useState(false);
+
+    const updateReviews = () => {
+        setTrigger(!triggerState);
     };
 
     return (
         <div className={styles.Product}>
-            <Paper className={styles.Paper}>
-                <Details wine={wine} />
-            </Paper>
-            <Paper className={styles.Paper}>
-                <Reviews wineId={wineId} />
-            </Paper>
-            <Paper className={styles.Paper}>
-                <NewReview />
-            </Paper>
+            <div className={styles.Wrapper}>
+                <Paper className={styles.Paper}>
+                    <Details wineId={wineId} />
+                </Paper>
+            </div>
+            <div className={styles.Wrapper}>
+                <Paper className={styles.Paper}>
+                    <Reviews wineId={wineId} updateReview={triggerState} />
+                </Paper>
+            </div>
+            <div className={styles.Wrapper}>
+                <Paper className={styles.Paper}>
+                    <NewReview wineId={wineId} updateReviews={updateReviews} />
+                </Paper>
+            </div>
         </div>
     );
 };
