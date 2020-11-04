@@ -17,18 +17,6 @@ const newReview = ({ wineId, updateReviews }) => {
         review: '',
     });
 
-    // POST review
-    const postDataHandler = () => {
-        // After the review has been posted, update the reviews in the Reviews component
-        const review = {
-            rating: ratingState.rating,
-            review: reviewState.review,
-        };
-        axios
-            .post(`http://localhost:3000/wines/${wineId}/ratings/`, review)
-            .then(() => updateReviews());
-    };
-
     // Update the rating state
     const ratingChangeHandler = (event, newValue) => {
         setRating({
@@ -43,6 +31,27 @@ const newReview = ({ wineId, updateReviews }) => {
         });
     };
 
+    // POST review
+    const postDataHandler = () => {
+        // After the review has been posted, update the reviews in the Reviews component
+        const review = {
+            rating: ratingState.rating,
+            review: reviewState.review,
+        };
+        axios
+            .post(`${process.env.API_BASE_URL}wines/${wineId}/ratings/`, review)
+            .then(() => {
+                // Update the reviews
+                updateReviews();
+
+                // Cleanup the review
+                ratingChangeHandler(null, 3);
+                setReview({
+                    review: '',
+                });
+            });
+    };
+
     return (
         <div>
             <h1 className={styles.Heading}>New Review</h1>
@@ -50,7 +59,7 @@ const newReview = ({ wineId, updateReviews }) => {
                 Rating
             </Typography>
             <Slider
-                defaultValue={3}
+                value={ratingState.rating}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
                 step={1}
@@ -66,6 +75,7 @@ const newReview = ({ wineId, updateReviews }) => {
                 variant="outlined"
                 onChange={reviewChangeHandler}
                 inputProps={{ style: { fontSize: 14 } }}
+                value={reviewState.review}
             />
             <div className={styles.Button}>
                 <Button

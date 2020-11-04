@@ -9,13 +9,13 @@ class App extends Component {
         super(props);
         this.state = {
             wines: [],
-            selectedWine: '-1',
+            selectedWine: -1,
         };
     }
 
     componentDidMount() {
         // Get the list of wines
-        axios.get('http://localhost:3000/wines/').then((response) => {
+        axios.get(`${process.env.API_BASE_URL}wines/`).then((response) => {
             this.setState({ wines: response.data });
         });
     }
@@ -32,7 +32,7 @@ class App extends Component {
         // Decide whether to show a message or the product
         let wineCard = <h1 className={styles.noWineSelected}>Please Select a Wine</h1>;
         // The wine id must not be -1 in order to show the product details
-        if (selectedWine !== '-1') {
+        if (selectedWine !== -1) {
             wineCard = (
                 <div>
                     <Product wineId={selectedWine} />

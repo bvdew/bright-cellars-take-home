@@ -13,19 +13,23 @@ const reviews = ({ wineId, updateReview }) => {
     // When the wine id or the update review trigger is changed, get the list of reviews
     useEffect(() => {
         // Get Wine Reviews
-        axios.get(`http://localhost:3000/wines/${wineId}/ratings/`).then((response) => {
-            // Get the sum of the ratings
-            const ratingSum = response.data.ratings.reduce(
-                (a, b) => a + (b.rating || 0),
-                0
-            );
-            // Find the average rating by dividing the sum by the total number of ratings
-            const averageRating = (ratingSum / response.data.ratings.length).toFixed(2);
-            setReviewsState({
-                reviews: response.data.ratings,
-                averageRating,
+        axios
+            .get(`${process.env.API_BASE_URL}wines/${wineId}/ratings/`)
+            .then((response) => {
+                // Get the sum of the ratings
+                const ratingSum = response.data.ratings.reduce(
+                    (a, b) => a + (b.rating || 0),
+                    0
+                );
+                // Find the average rating by dividing the sum by the total number of ratings
+                const averageRating = (ratingSum / response.data.ratings.length).toFixed(
+                    2
+                );
+                setReviewsState({
+                    reviews: response.data.ratings,
+                    averageRating,
+                });
             });
-        });
     }, [wineId, updateReview]);
 
     return (

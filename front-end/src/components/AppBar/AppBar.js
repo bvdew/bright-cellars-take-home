@@ -36,7 +36,7 @@ const appBar = ({ wines, selectedWine, selectWine }) => {
                     inputProps={{ 'aria-label': 'Select Wine' }}
                     onChange={handleChange}
                 >
-                    <MenuItem key="0" value="-1">
+                    <MenuItem key="0" value={-1}>
                         None
                     </MenuItem>
                     {wines.map((wine) => (
@@ -50,7 +50,7 @@ const appBar = ({ wines, selectedWine, selectWine }) => {
     );
 };
 appBar.defaultProps = {
-    selectedWine: '-1',
+    selectedWine: -1,
 };
 appBar.propTypes = {
     wines: PropTypes.arrayOf(PropTypes.object).isRequired,

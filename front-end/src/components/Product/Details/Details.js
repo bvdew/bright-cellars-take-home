@@ -17,14 +17,14 @@ const details = ({ wineId }) => {
     // When the wine id is updated, retrieve the details
     useEffect(() => {
         // Get Wine Details
-        axios.get(`http://localhost:3000/wines/${wineId}/`).then((response) => {
+        axios.get(`${process.env.API_BASE_URL}wines/${wineId}/`).then((response) => {
             setWineState({
                 wine: response.data,
             });
         });
         // Get Tag Names
         axios
-            .get(`http://localhost:3000/wines/${wineId}/taste_tags/`)
+            .get(`${process.env.API_BASE_URL}wines/${wineId}/taste_tags/`)
             .then((response) => {
                 const tags = response.data.taste_tags.map((tag) => tag.name).join(', ');
                 setTagsState({
