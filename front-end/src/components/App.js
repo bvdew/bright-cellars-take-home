@@ -9,36 +9,30 @@ class App extends Component {
         super(props);
         this.state = {
             wines: [],
-            selectedWine: -1,
+            selectedWine: '-1',
         };
     }
 
     componentDidMount() {
+        // Get the list of wines
         axios.get('http://localhost:3000/wines/').then((response) => {
             this.setState({ wines: response.data });
         });
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        const { selectedWine } = this.state;
-        if (nextState.selectedWine !== selectedWine) {
-            return true;
-        }
-        console.log('No Update');
-        return false;
-    }
-
     changeWineHandler(updatedWine) {
+        // Update the selected wine
         this.setState({ selectedWine: updatedWine });
     }
 
     render() {
+        // Get the current state
         const { wines, selectedWine } = this.state;
 
+        // Decide whether to show a message or the product
         let wineCard = <h1 className={styles.noWineSelected}>Please Select a Wine</h1>;
-        console.log(selectedWine);
-        if (selectedWine !== -1) {
-            console.log('Load the product', selectedWine);
+        // The wine id must not be -1 in order to show the product details
+        if (selectedWine !== '-1') {
             wineCard = (
                 <div>
                     <Product wineId={selectedWine} />

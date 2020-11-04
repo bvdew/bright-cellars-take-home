@@ -5,13 +5,16 @@ import productImage from '../../../assets/wines/folk-and-fable.png';
 import styles from './Details.scss';
 
 const details = ({ wineId }) => {
+    // State initialization for the wine details
     const [wineState, setWineState] = useState({
         wine: {},
     });
+    // State initialization for the wine tags
     const [tagsState, setTagsState] = useState({
         tags: '',
     });
 
+    // When the wine id is updated, retrieve the details
     useEffect(() => {
         // Get Wine Details
         axios.get(`http://localhost:3000/wines/${wineId}/`).then((response) => {

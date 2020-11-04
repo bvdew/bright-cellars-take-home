@@ -8,15 +8,18 @@ import React, { useState } from 'react';
 import styles from './NewReview.scss';
 
 const newReview = ({ wineId, updateReviews }) => {
+    // State initialization for the user rating
     const [ratingState, setRating] = useState({
         rating: 3,
     });
+    // State initialization for the user review
     const [reviewState, setReview] = useState({
         review: '',
     });
 
     // POST review
     const postDataHandler = () => {
+        // After the review has been posted, update the reviews in the Reviews component
         const review = {
             rating: ratingState.rating,
             review: reviewState.review,

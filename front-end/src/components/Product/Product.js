@@ -7,8 +7,10 @@ import styles from './Product.scss';
 import Reviews from './Reviews/Reviews';
 
 const product = ({ wineId }) => {
+    // triggerState is used to tell the component to update the reviews when a new review is posted
     const [triggerState, setTrigger] = useState(false);
 
+    // A new review was posted, so trigger the reviews
     const updateReviews = () => {
         setTrigger(!triggerState);
     };

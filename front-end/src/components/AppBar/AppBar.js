@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './AppBar.scss';
 
+// Set the style of the select field
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
@@ -17,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const appBar = ({ wines, selectedWine, selectWine }) => {
+    // Get the styles for the select
     const classes = useStyles();
 
+    // Update the selected wine when select value changes
     const handleChange = (event) => {
         selectWine(event.target.value);
     };
@@ -47,7 +50,7 @@ const appBar = ({ wines, selectedWine, selectWine }) => {
     );
 };
 appBar.defaultProps = {
-    selectedWine: '',
+    selectedWine: '-1',
 };
 appBar.propTypes = {
     wines: PropTypes.arrayOf(PropTypes.object).isRequired,

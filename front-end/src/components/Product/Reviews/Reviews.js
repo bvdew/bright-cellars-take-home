@@ -4,11 +4,13 @@ import React, { useEffect, useState } from 'react';
 import styles from './Reviews.scss';
 
 const reviews = ({ wineId, updateReview }) => {
+    // State initialization for the list of reviews and average rating
     const [reviewsState, setReviewsState] = useState({
         reviews: [],
         averageRating: 0.0,
     });
 
+    // When the wine id or the update review trigger is changed, get the list of reviews
     useEffect(() => {
         // Get Wine Reviews
         axios.get(`http://localhost:3000/wines/${wineId}/ratings/`).then((response) => {
